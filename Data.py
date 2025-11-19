@@ -1,3 +1,5 @@
+import os
+
 super = ("super", "123")
 
 admin = {
@@ -9,3 +11,7 @@ users = {
     "user 1" : ["mie ayam", "0000"],
     "user 2" : ["pangsit", "0000"]
 }
+
+def clear():
+    os.system("clear || cls")
+
