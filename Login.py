@@ -9,6 +9,7 @@ def login():
     login = True
     while login:
         if percobaan < 3:
+            print("MAKSIMAL 3 KALI INPUT JIKA SALAH")
             username = input("masukkan username anda : ")
             password = input("masukkan password anda : ")
 
