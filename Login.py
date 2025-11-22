@@ -9,6 +9,7 @@ def login():
     login = True
     while login:
         if percobaan < 3:
+            print("COBA AJA NIH")
             username = input("masukkan username anda : ")
             password = input("masukkan password anda : ")
 
@@ -34,6 +35,7 @@ def login():
                 SELAMAT DATANG {value[0]}\n""")
                         Menu_User(key)  
                         return key
+                        
 
                 percobaan += 1
                 print("username atau password salah")
