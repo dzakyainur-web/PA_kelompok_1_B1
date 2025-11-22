@@ -1,5 +1,8 @@
 import SuperAdmin
 from Data import super, admin, users
+from Menu_user import Menu_User
+from menu_admin import menu_admin
+
 
 def login():
     percobaan = 0
@@ -21,14 +24,16 @@ def login():
                         print(f"""
                 ====ANDA BERHASIL LOGIN SEBAGAI ADMIN====
                 SELAMAT DATANG {value[0]}\n""")
-                        return True
+                        menu_admin(key)
+                        return key
 
                 for key, value in users.items():
                     if username == value[0] and password == value[1]:
                         print(f"""
                 ====ANDA BERHASIL LOGIN SEBAGAI USER====
                 SELAMAT DATANG {value[0]}\n""")
-                        return True
+                        Menu_User(key)  
+                        return key
 
                 percobaan += 1
                 print("username atau password salah")

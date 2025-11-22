@@ -3,13 +3,12 @@ from Lihat_Data_User import Lihat_DataUser
 from Ubah_Data_User import Ubah_DataUser
 from Hapus_Data_User import Hapus_DataUser
 from Lihat_Riwayat_TransaksiUser import Lihat_Riwayat_Transaksi_User
+from Data import clear
 
-def clear():
-    os.system('cls || clear')
-
-def menu_admin():
+def menu_admin(adminID):
     while True:
         clear()
+        print(f"=== MENU ADMIN ({adminID}) ===")
         print("1. Lihat Data User")
         print("2. Ubah Data User")
         print("3. Hapus Akun User")
