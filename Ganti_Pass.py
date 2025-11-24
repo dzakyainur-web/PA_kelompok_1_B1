@@ -15,7 +15,6 @@ def Ganti_Password(userID):
         print("\n=== GANTI PASSWORD ===")
         print("\nKetik 'batal' jika lupa password")
 
-        # INPUT PASSWORD LAMA
         pw_lama = input("Masukkan password lama: ").strip()
 
         if pw_lama == "":
@@ -33,7 +32,6 @@ def Ganti_Password(userID):
             input("\nTekan ENTER untuk kembali...")
             continue
 
-        # INPUT PASSWORD BARU
         pw_baru = input("Masukkan password baru: ").strip()
 
         if pw_baru == "":
@@ -46,7 +44,6 @@ def Ganti_Password(userID):
             input("\nTekan ENTER untuk kembali...")
             continue
 
-        # KONFIRMASI PASSWORD BARU
         konfirmasi = input("Konfirmasi password baru: ").strip()
 
         if konfirmasi == "":
