@@ -12,10 +12,13 @@ def Tambah_pemasukan(userID):
         return
     sumber = input("Masukkan sumber pemasukan: ")
     tanggal = datetime.now().strftime("%d-%m-%y")
+
     users[userID][2] += jumlah
     users[userID][3].append([jumlah, sumber, tanggal])
+
     table = PrettyTable(["Jumlah", "Sumber", "Tanggal"])
     table.add_row([jumlah, sumber, tanggal])
+    
     print("\nPemasukan berhasil ditambahkan!\n")
     print(table)
     input("\nTekan ENTER untuk kembali...")

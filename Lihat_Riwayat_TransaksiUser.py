@@ -13,6 +13,7 @@ def Lihat_Riwayat_Transaksi_User():
         daftar_key = list(users.keys())
         key_dipilih = daftar_key[lihat - 1]
         riwayat_transaksi = users[key_dipilih][2]
+        
         if len(riwayat_transaksi) == 0:
             print(f"Tidak ada riwayat transaksi untuk user '{key_dipilih}'.")
         else:
