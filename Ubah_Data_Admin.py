@@ -1,15 +1,16 @@
-from Data import admin
+from Data import admin, clear
 
 def Ubah_DataAdmin():
+    clear()
     if len(admin) == 0:
         print("BELUM ADA NASABAH")
 
     else:
-        print("DAFTAR ADMIN :")
+        print("DAFTAR DATA ADMIN (PENGUBAHAN DATA) :")
         for key, value in admin.items():
             print(f"\n{key}\nNAMA : {value[0]}\nPASSWORD : {value[1]}")
 
-        ubah1 = int(input("ADMIN NOMOR BERAPA ? "))
+        ubah1 = int(input("\nADMIN NOMOR BERAPA ? "))
         daftar_key = list(admin.keys())
         key_dipilih = daftar_key[ubah1 -1]
 
@@ -21,10 +22,14 @@ def Ubah_DataAdmin():
         if ubah2 == '1':
             admin[key_dipilih][0] = input("masukkan nama baru : ")
             print("NAMA BERHASIL DIGANTI")
+            input("TEKAN ENTER UNTUK MELANJUTKAN")
+            clear()
 
         elif ubah2 == '2':
-            admin[key_dipilih][1] = input("masukkan nama baru : ")
-            print("NAMA BERHASIL DIGANTI")
+            admin[key_dipilih][1] = input("masukkan password baru : ")
+            print("PASSWORD BERHASIL DIGANTI")
+            clear()
 
         else:
-            print("tidak ada pilihan")
+            clear()
+            print("tidak ada pilihan".upper())

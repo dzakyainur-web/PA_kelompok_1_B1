@@ -2,11 +2,13 @@ import Login, register, Data
 from prettytable import PrettyTable
 
 t = PrettyTable()
-t.field_names = ["Nama"]
+t.title = "SELAMAT DATANG DI MBS (MOBILE BANKING SEDERHANA)"
+t.field_names = ["MENU"]
 t.add_row(["1. REGIS"])
 t.add_row(["2. LOGIN"])
 t.add_row(["3. KELUAR"])
 t.align = "l"
+t.align["SELAMAT DATANG DI MBS (MOBILE BANKING SEDERHANA)"] = "c"
 t.header = False
 
 t2 = PrettyTable()

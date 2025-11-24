@@ -5,6 +5,10 @@ def Hapus_DataAdmin():
         print("BELUM ADA ADMIN")
 
     else:
+        print("DAFTAR DATA ADMIN :")
+        for key, value in admin.items():
+            print(f"\n{key}\nNAMA : {value[0]}\nPASSWORD : {value[1]}")
+            
         hapus = int(input("\nDATA NOMOR BBERAPA YANG INGIN DI HAPUS? "))
         daftar_key = list(admin.keys())
 

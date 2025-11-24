@@ -1,7 +1,8 @@
-from Data import admin
+from Data import admin, clear
 
 def Tambah_DataAdmin():
-    print("=SILAHKAN REGISTRASI BAGI ADMIN BARU=")
+    clear()
+    print("=silahkan registrasi untuk admin baru=".upper())
     username = input("masukkan username anda : ")
     password = input("masukkan password anda : ")
     cek = False
@@ -17,4 +18,5 @@ def Tambah_DataAdmin():
     else:
         key_baru = "admin " + str(len(admin)+1)
         admin[key_baru] = [username, password]
+        clear()
         print("==BERHASIL REGISTRASI==")
