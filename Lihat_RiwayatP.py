@@ -9,8 +9,8 @@ def Lihat_RiwayatP(userID):
     pengeluaran = users[userID][4]
 
     if not pemasukan and not pengeluaran:
-        print("Belum ada riwayat...")
-        input("Tekan ENTER untuk kembali...")
+        print("\nBELUM ADA")
+        input("\nTekan ENTER untuk kembali...")
         return
     table = PrettyTable(["Jenis", "Jumlah", "Keterangan", "Tanggal"])
     for jumlah, sumber, tanggal in pemasukan:

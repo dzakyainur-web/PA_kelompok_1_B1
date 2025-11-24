@@ -8,17 +8,32 @@ def Tambah_pemasukan(userID):
     try:
         jumlah = int(input("Masukkan jumlah pemasukan: "))
     except:
-        print("Input jumlah harus angka!")
+        print("\nINPUT HARUS ANGKA!")
+        input("\nTekan ENTER untuk kembali...")
         return
-    sumber = input("Masukkan sumber pemasukan: ")
-    tanggal = datetime.now().strftime("%d-%m-%y")
+    
+    while True:
+        sumber = input("Masukkan sumber pemasukan: ").strip()
 
+        if sumber == "":
+            print("\nINPUT TIDAK BOLEH KOSONG!!!")
+            input("\nTekan ENTER untuk kembali...")
+            clear()
+            continue
+
+        if sumber.isnumeric():
+            print("\nINPUT JANGAN ANGKA SAJA!!!")
+            input("\nTekan ENTER untuk kembali...")
+            clear()
+            continue
+
+        break
+    
+    tanggal = datetime.now().strftime("%d-%m-%y")
     users[userID][2] += jumlah
     users[userID][3].append([jumlah, sumber, tanggal])
-
     table = PrettyTable(["Jumlah", "Sumber", "Tanggal"])
     table.add_row([jumlah, sumber, tanggal])
-    
     print("\nPemasukan berhasil ditambahkan!\n")
     print(table)
     input("\nTekan ENTER untuk kembali...")
