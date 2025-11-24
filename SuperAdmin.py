@@ -1,16 +1,23 @@
 import Tambah_Data_Admin, Lihat_Data_Admin, Hapus_Data_Admin, Ubah_Data_Admin
+from prettytable import PrettyTable
+from Data import clear
 
 def SuperADMIN():
+    tabel = PrettyTable()
+    tabel.title = "SUPER ADMIN"
+    tabel.field_names = ["MENU"]
+    tabel.add_row(["1. Tambah Data Admin"])
+    tabel.add_row(["2. Lihat Data Admin"])
+    tabel.add_row(["3. Ubah Data Admin"])
+    tabel.add_row(["4. Hapus Admin"])
+    tabel.add_row(["5. Keluar"])
+    tabel.align = "l"
+    tabel.align["SUPER ADMIN"] = "c"
+    tabel.header = False
+
     SA = True
     while SA:
-        print("""
-        Super Admin
-        1. Tambah Data Admin
-        2. Lihat Data Admin
-        3. Ubah Data Admin
-        4. Hapus Admin
-        5. Keluar
-        """)
+        print(tabel)
 
         try:
             superadmin = int(input("silahkan masukkan nomor : "))
@@ -28,6 +35,7 @@ def SuperADMIN():
                 Hapus_Data_Admin.Hapus_DataAdmin()
 
             elif superadmin == 5:
+                clear()
                 SA = False
 
             else:
