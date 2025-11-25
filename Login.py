@@ -10,11 +10,9 @@ def login():
     print("MAKSIMAL 3 KALI INPUT")
     while login:
         if percobaan < 3:
-<<<<<<< HEAD
-            print("COBA AJA NIH")
-=======
+
             print(f"INPUT KE-{percobaan+1}")
->>>>>>> a453bb008990ac1a8c6be7eb39e7ac59a708aebb
+
             username = input("masukkan username anda : ")
             password = input("masukkan password anda : ")
 
