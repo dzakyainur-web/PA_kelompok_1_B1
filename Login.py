@@ -1,5 +1,5 @@
 import SuperAdmin
-from Data import super, admin, users
+from Data import super, admin, users, clear
 from Menu_user import Menu_User
 from menu_admin import menu_admin
 
@@ -7,17 +7,23 @@ from menu_admin import menu_admin
 def login():
     percobaan = 0
     login = True
+    print("MAKSIMAL 3 KALI INPUT")
     while login:
         if percobaan < 3:
+<<<<<<< HEAD
             print("COBA AJA NIH")
+=======
+            print(f"INPUT KE-{percobaan+1}")
+>>>>>>> a453bb008990ac1a8c6be7eb39e7ac59a708aebb
             username = input("masukkan username anda : ")
             password = input("masukkan password anda : ")
 
 
             if username == super[0] and password == super[1]:
-                print("superadmin")
+                clear()
                 SuperAdmin.SuperADMIN()
                 break
+                
 
             else:    
                 for key, value in admin.items():
@@ -37,12 +43,14 @@ def login():
                         return key
                         
 
+                clear()
                 percobaan += 1
                 print("username atau password salah")
                 login = True
             
 
         else:
-            print("sudah mencoba 3 kali")
+            clear()
+            print("SUDAH INPUT SEBANYAK 3 KALI")
             login = False
-
+            
