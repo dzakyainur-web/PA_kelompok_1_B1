@@ -30,7 +30,8 @@ def Menu_User(userID):
         elif pilihan == "5":
             Ganti_Password(userID)
         elif pilihan == "6":
-            Hapus_User(userID)
+            if Hapus_User(userID):   
+                return 
         elif pilihan == "7":
             clear()
             print("Keluar dari menu user...")
