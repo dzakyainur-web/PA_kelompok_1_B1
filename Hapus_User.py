@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 # from Data import users, clear
 
 # def Hapus_User(userID):
@@ -26,6 +27,8 @@
 #     print(f"User '{user}' berhasil dihapus!")
 
 #     input("\nTekan ENTER untuk kembali...")
+=======
+>>>>>>> Stashed changes
 from Data import users, clear
 
 def Hapus_User(userID):
