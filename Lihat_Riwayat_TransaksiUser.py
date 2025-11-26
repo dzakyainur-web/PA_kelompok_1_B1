@@ -58,6 +58,5 @@ def Lihat_Riwayat_Transaksi_User(adminID):
 
     input("\nTekan ENTER untuk kembali...")
     clear()
-    print("coba-coba")
 
 
