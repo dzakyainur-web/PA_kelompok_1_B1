@@ -22,7 +22,12 @@ def Hapus_DataUser(adminID):
 
         print(tabel_user)
 
-        pilih = input("\nMasukkan nomor user yang ingin dihapus: ").strip()
+        pilih = input("\nMasukkan nomor user yang ingin dihapus (Ketik 'batal' untuk membatalkan): ").strip()
+
+        if pilih.lower() == "batal":
+            print("\nPerintah dibatalkan")
+            input("\nTekan ENTER untuk kembali...")
+            return
 
         if pilih == "":
             print("Input tidak boleh kosong!")
