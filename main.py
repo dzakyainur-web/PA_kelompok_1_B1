@@ -40,4 +40,4 @@ while main:
     
     except ValueError:
         Data.clear()
-        print("INPUT HANYA BERUPA ANGKA")
+        print("INPUT HANYA BERUPA ANGKA\n") 
