@@ -22,8 +22,15 @@ def Lihat_Riwayat_Transaksi_User(adminID):
 
         print(tabel_user)
 
+        pilih = input("Masukkan nomor user yang ingin dilihat riwayat transaksinya (Ketik 'batal' untuk membatalkan): ").lower()
+
+        if pilih == "batal":
+            print("\nPerintah dibatalkan")
+            input("\nTekan ENTER untuk kembali...")
+            return
+        
         try:
-            pilih = int(input("\nPilih nomor user yang ingin dilihat riwayatnya: "))
+            pilih = int(pilih)
 
         except ValueError:
             print("Input harus berupa angka!")
