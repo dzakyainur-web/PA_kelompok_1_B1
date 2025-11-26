@@ -41,8 +41,8 @@ def Tambah_pengeluaran(userID):
     tanggal = datetime.now().strftime("%d-%m-%y")
     users[userID][2] -= jumlah
     users[userID][4].append([jumlah, Tujuan, tanggal])
-    table = PrettyTable(["Jumlah", "Tujuan", "Tanggal"])
+    table = PrettyTable(["Jumlah", "untuk", "Tanggal"])
     table.add_row([jumlah, Tujuan, tanggal])
-    print("\nPengeluaran berhasil ditambahkan!\n")
+    print("\Pengeluaran berhasil ditambahkan!\n")
     print(table)
     input("\nTekan ENTER untuk kembali...")
