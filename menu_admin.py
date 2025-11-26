@@ -38,4 +38,3 @@ def menu_admin(adminID):
         else:
             print("Pilihan Anda tidak valid!")
             input("\nTekan ENTER untuk mengulang...")
-            
