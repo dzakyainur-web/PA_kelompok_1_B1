@@ -108,4 +108,3 @@ def regis():
         except ValueError:
             clear()
             print("INPUT HARUS BERUPA ANGKA!")
-            print("COBA-COBA")
