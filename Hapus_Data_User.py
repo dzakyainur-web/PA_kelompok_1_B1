@@ -6,6 +6,7 @@ def Hapus_DataUser(adminID):
         if len(users) == 0:
             print("TIDAK ADA USER TERDAFTAR.")
             input("Tekan ENTER untuk kembali...")
+            clear()
             return
         
         clear()
@@ -16,35 +17,37 @@ def Hapus_DataUser(adminID):
         tabel_user = PrettyTable()
         tabel_user.field_names = ["No", "User ID", "Username", "Password"]
 
-        for idx, (uid, data) in enumerate(user_list, start=1):
+        for idx, (uid, data) in enumerate(user_list, start = 1):
             tabel_user.add_row([idx, uid, data[0], data[1]])
 
         print(tabel_user)
 
-        pilih = input("\nMasukkan nomor user yang ingin dihapus: ")
+        pilih = input("\nMasukkan nomor user yang ingin dihapus: ").strip()
 
- 
-        if not pilih.isdigit():
-            print("\nError: Hanya boleh memasukkan angka.")
-            input("Tekan ENTER untuk mengulang...")
-            continue 
-        
-        pilih = int(pilih)
-
-
-        if pilih < 1 or pilih > len(user_list):
-            print("\nError: Nomor user tidak ditemukan.")
+        if pilih == "":
+            print("Input tidak boleh kosong!")
             input("\nTekan ENTER untuk mengulang...")
             continue
+
+        if not pilih.isdigit():
+            print("\nHanya boleh memasukkan angka!")
+            input("Tekan ENTER untuk mengulang...")
+            continue
+
+        pilih = int(pilih)
         
+        if pilih < 1 or pilih > len(user_list):
+            print("\nNomor user tidak ditemukan!")
+            input("\nTekan ENTER untuk mengulang...")
+            continue
         
         user_id, user_data = user_list[pilih - 1]
 
         clear()
         print("Anda akan menghapus user berikut:\n")
-        print(f"User ID   : {user_id}")
-        print(f"Username  : {user_data[0]}")
-        print(f"Password  : {user_data[1]}\n")
+        print(f"User ID: {user_id}")
+        print(f"Username: {user_data[0]}")
+        print(f"Password: {user_data[1]}\n")
 
         konfirmasi = input("Yakin ingin menghapus? (y/n): ").lower()
 
@@ -60,16 +63,6 @@ def Hapus_DataUser(adminID):
             return
         
         else:
-            print("\nInput tidak valid! hanya (y/n).")
+            print("\nInput tidak valid! Hanya boleh (y/n).")
             input("Tekan ENTER untuk mengulang...")
-
-        
-
-
-
-
-
-
-
-
-
+            continue
