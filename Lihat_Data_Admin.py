@@ -8,5 +8,5 @@ def Lihat_DataAdmin():
 
     for key, value in admin.items():
         print(f"\n{key}\nNAMA : {value[0]}\nPASSWORD : {value[1]}")
-    input("TEKAN ENTER UNTUK KEMBALI")
+    input("\nTEKAN ENTER UNTUK KEMBALI...")
     clear()

@@ -39,7 +39,13 @@ def SuperADMIN():
                 SA = False
 
             else:
-                print("input nomor yang tertera")
+                clear()
+                print("\ninput nomor yang tertera".upper())
+                input("TEKAN ENTER UNTUK KEMBALI...")
+                clear()
 
         except ValueError:
-            print("hanya menerima angka")
+            clear()
+            print("\nhanya menerima angka".upper())
+            input("TEKAN ENTER UNTUK KEMBALI...")
+            clear()
