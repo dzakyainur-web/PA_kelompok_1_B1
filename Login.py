@@ -10,7 +10,9 @@ def login():
     print("MAKSIMAL 3 KALI INPUT")
     while login:
         if percobaan < 3:
+
             print(f"INPUT KE-{percobaan+1}")
+
             username = input("masukkan username anda : ")
             password = input("masukkan password anda : ")
 
@@ -37,6 +39,7 @@ def login():
                 SELAMAT DATANG {value[0]}\n""")
                         Menu_User(key)  
                         return key
+                        
 
                 clear()
                 percobaan += 1

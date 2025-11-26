@@ -1,6 +1,6 @@
 from Data import clear
 from Lihat_Data_User import Lihat_DataUser
-from Ubah_Data_User import Ubah_DataUser
+from Ubah_Data_User import Ubah_Data_User
 from Hapus_Data_User import Hapus_DataUser
 from Lihat_Riwayat_TransaksiUser import Lihat_Riwayat_Transaksi_User
 from Data import clear
@@ -9,6 +9,7 @@ def menu_admin(adminID):
     while True:
         clear()
         print("=== MENU ADMIN ===")
+        print(f"LOGIN SEBAGAI ADMIN: {adminID}\n")
         print("1. Lihat Data User")
         print("2. Ubah Data User")
         print("3. Hapus Akun User")
@@ -20,7 +21,7 @@ def menu_admin(adminID):
             Lihat_DataUser(adminID)
         
         elif pilihan_admin == "2":
-            Ubah_DataUser(adminID)
+            Ubah_Data_User(adminID)
         
         elif pilihan_admin == "3":
             Hapus_DataUser(adminID)

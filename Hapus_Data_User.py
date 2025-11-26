@@ -2,57 +2,69 @@ from Data import users, clear
 from prettytable import PrettyTable
 
 def Hapus_DataUser(adminID):
-    if len(users) == 0:
-        print("Data User belum tersedia.")
-        return 
-    
     while True:
+        if len(users) == 0:
+            print("TIDAK ADA USER TERDAFTAR.")
+            input("Tekan ENTER untuk kembali...")
+            return
+        
         clear()
-        tabel_user = PrettyTable()
-        tabel_user.field_names(["No", "ID User", "Username"])
-
-        user_keys = list(users.keys())
-
-        for idx, key in enumerate(user_keys, start = 1):
-            tabel_user.add_row([idx, key, users[key][0]]) 
-
-        print("\n=== HAPUS DATA USER ===")
+        print("=== HAPUS DATA USER ===")
         print(f"LOGIN SEBAGAI ADMIN: {adminID}\n")
+
+        user_list = list(users.items())
+        tabel_user = PrettyTable()
+        tabel_user.field_names = ["No", "User ID", "Username", "Password"]
+
+        for idx, (uid, data) in enumerate(user_list, start=1):
+            tabel_user.add_row([idx, uid, data[0], data[1]])
+
         print(tabel_user)
 
-        hapus = input("Masukkan nomor user yang mau dihapus: ")
+        pilih = input("\nMasukkan nomor user yang ingin dihapus: ")
 
-        if hapus == "":
-            print("Input tidak boleh kosong")
-            break
+ 
+        if not pilih.isdigit():
+            print("\nError: Hanya boleh memasukkan angka.")
+            input("Tekan ENTER untuk mengulang...")
+            continue 
+        
+        pilih = int(pilih)
 
-        try:
-            hapus = int(hapus)
 
-        except ValueError:
-            print("Input harus berupa angka.")
-            return
+        if pilih < 1 or pilih > len(user_list):
+            print("\nError: Nomor user tidak ditemukan.")
+            input("\nTekan ENTER untuk mengulang...")
+            continue
+        
+        
+        user_id, user_data = user_list[pilih - 1]
 
-        if hapus < 1 or hapus > len(user_keys):
-            print("Nomor tidak valid")
-            return
+        clear()
+        print("Anda akan menghapus user berikut:\n")
+        print(f"User ID   : {user_id}")
+        print(f"Username  : {user_data[0]}")
+        print(f"Password  : {user_data[1]}\n")
 
-        pilih_hapus = user_keys[hapus - 1]
-        username = users[pilih_hapus][0]
+        konfirmasi = input("Yakin ingin menghapus? (y/n): ").lower()
 
-        konfir = input(f"Anda yakin mau menghapus{username}? (y/n): ").lower()
-
-        if konfir == "y":
-            del users[pilih_hapus]
-            print("User berhasil dihapus")
+        if konfirmasi == "y":
+            del users[user_id]
+            print(f"\nUser {user_id} berhasil dihapus!")
             input("\nTekan ENTER untuk kembali...")
-
-            if len(users) == 0:
-                print("Semua user terhapus")
-                break
+            return
+        
+        elif konfirmasi == "n":
+            print("\nPenghapusan dibatalkan.")
+            input("\nTekan ENTER untuk kembali...")
+            return
+        
         else:
-            print("Dibatalkan")
-            input("\nTekan ENTER untuk kembali...")
+            print("\nInput tidak valid! hanya (y/n).")
+            input("Tekan ENTER untuk mengulang...")
+
+        
+
 
 
 

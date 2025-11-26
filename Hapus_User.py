@@ -1,73 +1,40 @@
-<<<<<<< Updated upstream
-# from Data import users, clear
-
-# def Hapus_User(userID):
-#     clear()
-#     print("=== HAPUS USER ===")
-
-#     yakin = input("Apakah Anda yakin ingin menghapus user? (yes/no): ").lower()
-#     if yakin != "yes":
-#         print("Penghapusan dibatalkan.")
-#         input("\nTekan ENTER untuk kembali...")
-#         return
-    
-#     while True:
-#         clear()
-#         print("=== KONFIRMASI PENGHAPUSAN ===")
-#         user = input("Masukkan username: ")
-#         pw = input("Masukkan password: ")
-
-#         if user in users and users[user][0] == pw:
-#             break
-#         else:
-#             print("Username atau password salah, coba lagi!")
-#             input("\nTekan ENTER untuk ulang...")
-
-#     del users[user]
-#     print(f"User '{user}' berhasil dihapus!")
-
-#     input("\nTekan ENTER untuk kembali...")
-=======
->>>>>>> Stashed changes
 from Data import users, clear
 
 def Hapus_User(userID):
     clear()
     print("=== HAPUS AKUN ===")
 
-    yakin = input("Apakah Anda yakin ingin menghapus akun Anda? (yes/no): ").lower()
-    if yakin != "yes":
-        print("\nPenghapusan dibatalkan.")
+    konfirm = input("Apakah Anda yakin ingin menghapus akun Anda? (yes/no): ").strip().lower()
+    if konfirm != "yes":
+        print("Penghapusan dibatalkan.")
         input("\nTekan ENTER untuk kembali...")
-        return
-    
+        return False
+
     while True:
         clear()
-        print("=== KONFIRMASI PENGHAPUSAN AKUN ===")
-        print("\nKetik 'batal' jika kamu lupa password")
-    
-        pw = input("Masukkan password Anda: ")
-
-        if pw.lower() == "batal":
-            print("\nDIBATALKAN")
-            input("\nTekan ENTER untuk kembali...")
-            return
+        print("\n=== PASTIKAN INI AKUN MU ===")
+        print("Ketik 'batal' untuk membatalkan dan kembali ke menu.")
         
-        if pw.strip() == "":
-            print("\nPASSWORD TIDAK BOLEH KOSONG!!!")
-            input("\nTekan ENTER untuk kembali...")
+        pw_input = input("\nMasukkan password akun Anda: ").strip().lower()
+
+        clear()
+        if pw_input == "":
+            print("\nINPUT TIDAK BOLEH KOSONG")
+            print("\nTekan ENTER untuk kembali...")
             continue
 
-        if pw != users[userID][1]:
-            print("\nPassword salah!")
+        clear()
+        if pw_input == "batal":
+            print("Penghapusan dibatalkan.")
+            input("\nTekan ENTER untuk kembali...")
+            return False
+
+        clear()
+        if users[userID][1] == pw_input:
+            del users[userID]
+            print(f"Akun '{userID}' berhasil dihapus.")
+            input("\nTekan ENTER untuk melanjutkan...")
+            return True
+        else:
+            print("Password salah! Jika lupa, ketik 'batal' untuk kembali.")
             input("\nTekan ENTER untuk ulang...")
-            continue
-        
-
-        break
-
-    username = users[userID][0]
-    del users[userID]
-
-    print(f"Akun '{username}' berhasil dihapus!")
-    input("\nTekan ENTER untuk kembali...")
