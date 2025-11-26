@@ -4,26 +4,36 @@ from prettytable import PrettyTable
 def Lihat_Riwayat_Transaksi_User(adminID):
     if len(users) == 0:
         print("TIDAK ADA USER TERDAFTAR.")
+        input("\nTekan ENTER untuk kembali...")
+        clear()
         return
     
-    clear()
-    print("=== LIHAT RIWAYAT TRANSAKSI USER ===")
-    print(f"LOGIN SEBAGAI ADMIN: {adminID}\n")
+    while True:
+        clear()
+        print("=== LIHAT RIWAYAT TRANSAKSI USER ===")
+        print(f"LOGIN SEBAGAI ADMIN: {adminID}\n")
 
-    user_list = list(users.items())
-    tabel_user = PrettyTable()
-    tabel_user.field_names = ["No", "User ID", "Username"]
+        user_list = list(users.items())
+        tabel_user = PrettyTable()
+        tabel_user.field_names = ["No", "User ID", "Username"]
 
-    for idx, (uid, data) in enumerate(user_list, start = 1):
-        tabel_user.add_row([idx, uid, data[0]])
+        for idx, (uid, data) in enumerate(user_list, start = 1):
+            tabel_user.add_row([idx, uid, data[0]])
 
-    print(tabel_user)
+        print(tabel_user)
 
-    try:
-        pilih = int(input("\nPilih nomor user yang ingin dilihat riwayatnya: "))
+        try:
+            pilih = int(input("\nPilih nomor user yang ingin dilihat riwayatnya: "))
+
+        except ValueError:
+            print("Input harus berupa angka!")
+            input("\nTekan ENTER untuk mengulang...")
+            continue
 
         if pilih < 1 or pilih > len(user_list):
-            raise ValueError("Nomor user tidak valid.")
+            print("Nomor tidak tersedia dalam daftar!")
+            input("\nTekan ENTER untuk mengulang...")
+            continue        
 
         user_id, user_data = user_list[pilih - 1]
 
@@ -36,27 +46,22 @@ def Lihat_Riwayat_Transaksi_User(adminID):
 
         if not pemasukan and not pengeluaran:
             print("Riwayat transaksi belum tersedia")
-        
+                
         else:
             tabel_riwayat = PrettyTable(["No", "Jenis", "Jumlah", "Keterangan", "Tanggal"])
 
-
             gabung_transaksi = []
 
-            for jumlah, sumber, tanggal in pemasukan:
-                gabung_transaksi.append(("Pemasukan", jumlah, sumber, tanggal))
-            
-            for jumlah, tujuan, tanggal in pengeluaran:
-                gabung_transaksi.append(("Pengeluaran", jumlah, tujuan, tanggal))
-            
-            for i, (jenis, jumlah, detail, tanggal) in enumerate(gabung_transaksi, start = 1):
-                tabel_riwayat.add_row([i, jenis, jumlah, detail, tanggal])
+            for jumlah_pemasukan, sumber, tanggal in pemasukan:
+                gabung_transaksi.append(("Pemasukan", jumlah_pemasukan, sumber, tanggal))
+                    
+            for jumlah_pengeluaran, tujuan, tanggal in pengeluaran:
+                gabung_transaksi.append(("Pengeluaran", jumlah_pengeluaran, tujuan, tanggal))
+                    
+            for i, (jenis, jumlah, keterangan, tanggal) in enumerate(gabung_transaksi, start = 1):
+                tabel_riwayat.add_row([i, jenis, jumlah, keterangan, tanggal])
             print(tabel_riwayat)
 
-    except ValueError as e:
-        print(f"Error: {e}")
-
-    input("\nTekan ENTER untuk kembali...")
-    clear()
-
-
+        input("\nTekan ENTER untuk kembali...")
+        clear()
+        return
