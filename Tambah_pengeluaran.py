@@ -46,7 +46,3 @@ def Tambah_pengeluaran(userID):
     print("\Pengeluaran berhasil ditambahkan!\n")
     print(table)
     input("\nTekan ENTER untuk kembali...")
-
-
-
-
