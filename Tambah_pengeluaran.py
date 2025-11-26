@@ -7,42 +7,48 @@ from datetime import datetime
 def Tambah_pengeluaran(userID):
     clear()
     print("=== TAMBAH PENGELUARAN ===")
-    try:
-        jumlah = int(input("Masukkan jumlah pengeluaran: "))
-    except:
-        print("\nINPUT HARUS ANGKA!")
-        input("\nTekan ENTER untuk kembali...")
-        return
-    
-    Saldo_Sekarang = users[userID][2]
-    
+
     while True:
-        if jumlah > Saldo_Sekarang:
-            print("\nSaldo tidak mencukupi!")
+        try:
+            jumlah = int(input("Masukkan jumlah pengeluaran: "))
+        except:
+            print("\nINPUT HARUS ANGKA!")
             input("\nTekan ENTER untuk kembali...")
-            return
+            continue
+        if jumlah <= 0:
+            print("\nINPUT TIDAK BOLEH 0 ATAU MINES")
+            input("\nTekan ENTER untuk kembali...")
+            continue
         
-        Tujuan = input("Untuk apa pengeluaran ini?: ").strip()
+        Saldo_Sekarang = users[userID][2]
+        
+        while True:
+            if jumlah > Saldo_Sekarang:
+                print("\nSaldo tidak mencukupi!")
+                input("\nTekan ENTER untuk kembali...")
+                return
+            
+            Tujuan = input("Untuk apa pengeluaran ini?: ").strip()
 
-        if Tujuan == "":
-            print("\nTujuan pengeluaran tidak boleh kosong!")
-            input("\nTekan ENTER untuk kembali...")
-            clear()
-            continue
+            if Tujuan == "":
+                print("\nTujuan pengeluaran tidak boleh kosong!")
+                input("\nTekan ENTER untuk kembali...")
+                clear()
+                continue
 
-        if Tujuan.isnumeric():
-            print("\nTujuan pengeluaran tidak boleh berupa angka!")
-            input("\nTekan ENTER untuk kembali...")
-            clear()
-            continue
+            if Tujuan.isnumeric():
+                print("\nTujuan pengeluaran tidak boleh berupa angka!")
+                input("\nTekan ENTER untuk kembali...")
+                clear()
+                continue
 
-        break
+            break
 
-    tanggal = datetime.now().strftime("%d-%m-%y")
-    users[userID][2] -= jumlah
-    users[userID][4].append([jumlah, Tujuan, tanggal])
-    table = PrettyTable(["Jumlah", "untuk", "Tanggal"])
-    table.add_row([jumlah, Tujuan, tanggal])
-    print("\Pengeluaran berhasil ditambahkan!\n")
-    print(table)
-    input("\nTekan ENTER untuk kembali...")
+        tanggal = datetime.now().strftime("%d-%m-%y")
+        users[userID][2] -= jumlah
+        users[userID][4].append([jumlah, Tujuan, tanggal])
+        table = PrettyTable(["Jumlah", "untuk", "Tanggal"])
+        table.add_row([jumlah, Tujuan, tanggal])
+        print("\Pengeluaran berhasil ditambahkan!\n")
+        print(table)
+        input("\nTekan ENTER untuk kembali...")

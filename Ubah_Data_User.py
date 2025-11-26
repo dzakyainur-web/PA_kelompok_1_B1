@@ -26,6 +26,8 @@ def Ubah_Data_User(adminID):
             print("\nInput harus angka.")
             input("\nTekan ENTER untuk mengulang")
             continue
+        if pilih == "batal":
+            return
 
         if pilih < 1 or pilih > len(user_list):
             print("\nNomor yang dimasukkan tidak valid!")
