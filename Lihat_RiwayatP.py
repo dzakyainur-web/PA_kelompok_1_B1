@@ -12,10 +12,22 @@ def Lihat_RiwayatP(userID):
         print("\nBELUM ADA")
         input("\nTekan ENTER untuk kembali...")
         return
-    table = PrettyTable(["Jenis", "Jumlah", "Keterangan", "Tanggal"])
-    for jumlah, sumber, tanggal in pemasukan:
-        table.add_row(["Pemasukan", jumlah, sumber, tanggal])
-    for jumlah, untuk, tanggal in pengeluaran:
-        table.add_row(["Pengeluaran", jumlah, untuk, tanggal])
-    print(table)
-    input("\nTekan ENTER untuk kembali...")
+    
+    else:
+        gabung_riwayat = []
+        
+        tabel_riwayat = PrettyTable(["No", "Jenis", "Jumlah", "Keterangan", "Tanggal"])
+
+        for jumlah_pemasukan, sumber, tanggal in pemasukan:
+            gabung_riwayat.append(("Pemasukan", jumlah_pemasukan, sumber, tanggal))
+                        
+        for jumlah_pengeluaran, tujuan, tanggal in pengeluaran:
+            gabung_riwayat.append(("Pengeluaran", jumlah_pengeluaran, tujuan, tanggal))
+                        
+        for i, (jenis, jumlah, keterangan, tanggal) in enumerate(gabung_riwayat, start = 1):
+            tabel_riwayat.add_row([i, jenis, f"Rp {jumlah:,}", keterangan, tanggal])
+        print(tabel_riwayat)
+
+        input("\nTekan ENTER untuk kembali...")
+        clear()
+        return
