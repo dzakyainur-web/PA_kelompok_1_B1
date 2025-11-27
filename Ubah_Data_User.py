@@ -47,10 +47,9 @@ def Ubah_Data_User(adminID):
             print(f"Password sekarang: {data_lama[1]}\n")
 
             new_username = input("Masukkan username baru: ").strip()
-            new_pw = input("Masukkan Password baru: ").strip()
 
-            if new_username == "" or new_pw == "":
-                print("\nUsername dan password tidak boleh kosong!")
+            if new_username == "":
+                print("\nUsername tidak boleh kosong!")
                 input("\nTekan ENTER untuk mengulang...")
                 continue
 
@@ -59,16 +58,22 @@ def Ubah_Data_User(adminID):
                 input("\nTekan ENTER untuk mengulang...")
                 continue
 
+            new_pw = input("Masukkan Password baru: ").strip()
+            
+            if new_pw == "":
+                print("\nPassword tidak boleh kosong!")
+                input("\nTekan ENTER untuk mengulang...")
+                continue
+
             for uid, data in users.items():
                 if uid != user_id and data[0] == new_username.lower():
                     print("\nUsername sudah dipakai oleh user lain!")
                     input("\nTekan ENTER untuk mengulang...")
                     break
+                
+                users[user_id][0] = new_username
+                users[user_id][1] = new_pw
 
-                else:
-                    users[user_id][0] = new_username
-                    users[user_id][1] = new_pw
-
-                    print("\nData berhasil diperbarui!")
-                    input("\nTekan ENTER untuk kembali...")
-                    return
+                print("\nData berhasil diperbarui!")
+                input("\nTekan ENTER untuk kembali...")
+                return
