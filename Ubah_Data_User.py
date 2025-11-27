@@ -20,6 +20,13 @@ def Ubah_Data_User(adminID):
             tabel_user.add_row([idx, uid, data[0], data[1]])
         print(tabel_user)
 
+        pilih = input("Masukkan nomor user yang ingin dilihat riwayat transaksinya (Ketik 'batal' untuk membatalkan): ").lower()
+
+        if pilih == "batal":
+            print("\nPerintah dibatalkan")
+            input("\nTekan ENTER untuk kembali...")
+            return
+
         try:
             pilih = int(input("Masukkan nomor user yang ingin diubah: "))
         except ValueError:
