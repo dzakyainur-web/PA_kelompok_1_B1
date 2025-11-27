@@ -11,7 +11,7 @@ def Tambah_pemasukan(userID):
         except:
             print("\nINPUT HARUS ANGKA!")
             input("\nTekan ENTER untuk kembali...")
-            return
+            continue
         
         if jumlah <= 0:
             print("\nINPUT TIDAK BOLEH 0 ATAU MINUS")
