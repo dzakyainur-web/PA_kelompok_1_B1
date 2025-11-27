@@ -10,12 +10,14 @@ def Tambah_pemasukan(userID):
             jumlah = int(input("Masukkan jumlah pemasukan: "))
         except:
             print("\nINPUT HARUS ANGKA!")
-            input("\nTekan ENTER untuk kembali...")
+            input("\nTekan ENTER untuk mengulang...")
+            clear()
             continue
         
         if jumlah <= 0:
             print("\nINPUT TIDAK BOLEH 0 ATAU MINUS")
-            input("\nTekan INPUT untuk kembali...")
+            input("\nTekan ENTER untuk mengulang...")
+            clear()
             continue
 
         while True:
@@ -23,13 +25,13 @@ def Tambah_pemasukan(userID):
 
             if sumber == "":
                 print("\nINPUT TIDAK BOLEH KOSONG!!!")
-                input("\nTekan ENTER untuk kembali...")
+                input("\nTekan ENTER untuk mengulang...")
                 clear()
                 continue
 
             if sumber.isnumeric():
-                print("\nINPUT JANGAN ANGKA SAJA!!!")
-                input("\nTekan ENTER untuk kembali...")
+                print("\nINPUT HANYA ANGKA SAJA!!!")
+                input("\nTekan ENTER untuk mengulang...")
                 clear()
                 continue
 
@@ -43,5 +45,5 @@ def Tambah_pemasukan(userID):
         print("\nPemasukan berhasil ditambahkan!\n")
         print(table)
         input("\nTekan ENTER untuk kembali...")
-
+        return
 

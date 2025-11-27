@@ -26,6 +26,7 @@ def Tambah_pengeluaran(userID):
             if jumlah > Saldo_Sekarang:
                 print("\nSaldo tidak mencukupi!")
                 input("\nTekan ENTER untuk kembali...")
+                clear()
                 return
             
             Tujuan = input("Untuk apa pengeluaran ini?: ").strip()
@@ -49,6 +50,7 @@ def Tambah_pengeluaran(userID):
         users[userID][4].append([jumlah, Tujuan, tanggal])
         table = PrettyTable(["Jumlah", "untuk", "Tanggal"])
         table.add_row([jumlah, Tujuan, tanggal])
-        print("\Pengeluaran berhasil ditambahkan!\n")
+        print("\nPengeluaran berhasil ditambahkan!")
         print(table)
         input("\nTekan ENTER untuk kembali...")
+        return
