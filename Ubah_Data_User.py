@@ -19,58 +19,48 @@ def Ubah_Data_User(adminID):
         for idx, (uid, data) in enumerate(user_list, start=1):
             tabel_user.add_row([idx, uid, data[0], data[1]])
         print(tabel_user)
-        
-        pilih = input("Masukkan nomor user yang ingin diubah (Ketik 'batal' untuk membatalkan): ").lower()
 
-        if pilih == "batal":
-            print("\nPerintah dibatalkan")
-            input("\nTekan ENTER untuk kembali...")
-            return
         try:
-            pilih = int(pilih)
+            pilih = int(input("Masukkan nomor user yang ingin diubah: "))
         except ValueError:
             print("\nInput harus angka.")
             input("\nTekan ENTER untuk mengulang")
             continue
-        if pilih == "batal":
-            return
-
-        user_id, data_lama = user_list[pilih - 1]
 
         if pilih < 1 or pilih > len(user_list):
             print("\nNomor yang dimasukkan tidak valid!")
             input("\nTekan ENTER untuk mengulang....")
             continue
 
-        while True:
-            clear()
-            print(f"UBAH DATA USER: {user_id}")
-            print(f"Username sekarang: {data_lama[0]}")
-            print(f"Password sekarang: {data_lama[1]}\n")
+        user_id, data_lama = user_list[pilih - 1]
 
-            new_username = input("Masukkan username baru: ").strip()
-            new_pw = input("Masukkan Password baru: ").strip()
+        clear()
+        print(f"UBAH DATA USER: {user_id}")
+        print(f"Username sekarang: {data_lama[0]}")
+        print(f"Password sekarang: {data_lama[1]}\n")
 
-            if new_username == "" or new_pw == "":
-                print("\nUsername dan password tidak boleh kosong!")
+        new_username = input("Masukkan username baru: ").strip()
+        new_pw = input("Masukkan Password baru: ").strip()
+
+        if new_username == "" or new_pw == "":
+            print("\nUsername dan password tidak boleh kosong!")
+            input("\nTekan ENTER untuk mengulang...")
+            continue
+
+        if new_username.lower() == data_lama[0]:
+            print("\nUsername baru tidak boleh sama dengan username lama!")
+            input("\nTekan ENTER untuk mengulang...")
+            continue
+
+        for uid, data in users.items():
+            if uid != user_id and data[0] == new_username.lower():
+                print("\nUsername sudah dipakai oleh user lain!")
                 input("\nTekan ENTER untuk mengulang...")
-                continue
+                break
+        else:
+            users[user_id][0] = new_username
+            users[user_id][1] = new_pw
 
-            if new_username.lower() == data_lama[0]:
-                print("\nUsername baru tidak boleh sama dengan username lama!")
-                input("\nTekan ENTER untuk mengulang...")
-                continue
-
-            for uid, data in users.items():
-                if uid != user_id and data[0] == new_username.lower():
-                    print("\nUsername sudah dipakai oleh user lain!")
-                    input("\nTekan ENTER untuk mengulang...")
-                    break
-
-                else:
-                    users[user_id][0] = new_username
-                    users[user_id][1] = new_pw
-
-                    print("\nData berhasil diperbarui!")
-                    input("\nTekan ENTER untuk kembali...")
-                    return
+            print("\nData berhasil diperbarui!")
+            input("\nTekan ENTER untuk kembali...")
+            return
