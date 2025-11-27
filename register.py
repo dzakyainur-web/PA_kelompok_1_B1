@@ -23,9 +23,10 @@ def regis():
             if reg == 1:
                 while True:
                     clear()
-                    print("======= SILAKAN REGISTRASI ADMIN BARU ========")
-                    print("= KETIK 'BATAL' UNTUK MEMBATALKAN REGISTRASI =")
-                    print("========= INPUT TIDAK BOLEH KOSONG ===========")
+                    print("========== SILAKAN REGISTRASI ADMIN BARU ===========")
+                    print("==== KETIK 'BATAL' UNTUK MEMBATALKAN REGISTRASI ====")
+                    print("============ INPUT TIDAK BOLEH KOSONG ==============")
+                    print("= USERNAME TIDAK BOLEH SAMA DENGAN YANG SEBELUMNYA =")
 
                     if len(admin) > 0:
                         print("\nDAFTAR ADMIN SAAT INI:")
@@ -75,10 +76,10 @@ def regis():
             elif reg == 2:
                 while True:
                     clear()
-                    print("======== SILAKAN REGISTRASI USER BARU ========")
-                    print("= KETIK 'BATAL' UNTUK MEMBATALKAN REGISTRASI =")
-                    print("========= INPUT TIDAK BOLEH KOSONG ===========")
-
+                    print("========== SILAKAN REGISTRASI USER BARU ============")
+                    print("==== KETIK 'BATAL' UNTUK MEMBATALKAN REGISTRASI ====")
+                    print("============ INPUT TIDAK BOLEH KOSONG ==============")
+                    print("= USERNAME TIDAK BOLEH SAMA DENGAN YANG SEBELUMNYA =")
 
                     username = input("\nMasukkan username: ").strip()
                     if username == "":
