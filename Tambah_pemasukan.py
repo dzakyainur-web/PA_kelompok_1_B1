@@ -46,4 +46,3 @@ def Tambah_pemasukan(userID):
         print(table)
         input("\nTekan ENTER untuk kembali...")
         return
-
