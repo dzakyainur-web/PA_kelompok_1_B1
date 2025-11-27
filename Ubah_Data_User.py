@@ -20,7 +20,7 @@ def Ubah_Data_User(adminID):
             tabel_user.add_row([idx, uid, data[0], data[1]])
         print(tabel_user)
 
-        pilih = input("Masukkan nomor user yang ingin dilihat riwayat transaksinya (Ketik 'batal' untuk membatalkan): ").lower()
+        pilih = input("Masukkan nomor user yang ingin diubah (Ketik 'batal' untuk membatalkan): ").lower()
 
         if pilih == "batal":
             print("\nPerintah dibatalkan")
@@ -28,7 +28,7 @@ def Ubah_Data_User(adminID):
             return
 
         try:
-            pilih = int(input("Masukkan nomor user yang ingin diubah: "))
+            pilih = int(pilih)
         except ValueError:
             print("\nInput harus angka.")
             input("\nTekan ENTER untuk mengulang")
@@ -47,10 +47,9 @@ def Ubah_Data_User(adminID):
         print(f"Password sekarang: {data_lama[1]}\n")
 
         new_username = input("Masukkan username baru: ").strip()
-        new_pw = input("Masukkan Password baru: ").strip()
 
-        if new_username == "" or new_pw == "":
-            print("\nUsername dan password tidak boleh kosong!")
+        if new_username == "":
+            print("\nUsername tidak boleh kosong!")
             input("\nTekan ENTER untuk mengulang...")
             continue
 
@@ -59,15 +58,28 @@ def Ubah_Data_User(adminID):
             input("\nTekan ENTER untuk mengulang...")
             continue
 
+        new_pw = input("Masukkan Password baru: ").strip()
+
+        if new_pw == "":
+            print("\nPassword tidak boleh kosong!")
+            input("\nTekan ENTER untuk mengulang...")
+            continue
+
+        username_sudah_dipakai = False
         for uid, data in users.items():
             if uid != user_id and data[0] == new_username.lower():
-                print("\nUsername sudah dipakai oleh user lain!")
-                input("\nTekan ENTER untuk mengulang...")
+                username_sudah_dipakai = True
                 break
 
-            users[user_id][0] = new_username
-            users[user_id][1] = new_pw
+        if username_sudah_dipakai:
+            print("\nUsername sudah dipakai oleh user lain!")
+            input("\nTekan ENTER untuk mengulang...")
+            continue
+        break
 
-            print("\nData berhasil diperbarui!")
-            input("\nTekan ENTER untuk kembali...")
-            return
+    users[user_id][0] = new_username
+    users[user_id][1] = new_pw
+
+    print("\nData berhasil diperbarui!")
+    input("\nTekan ENTER untuk kembali...")
+    return
