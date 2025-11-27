@@ -1,5 +1,6 @@
-from Data import admin, users, super_admin, admin_terakhir, clear
+from Data import admin, users, super_admin, clear
 from prettytable import PrettyTable
+import Data
 
 # Tabel menu registrasi
 tabel = PrettyTable()
@@ -11,7 +12,6 @@ tabel.header = False
 tabel.align = "l"
 
 def regis():
-    global admin_terakhir
     regis = True
     while regis:
         try:
@@ -64,8 +64,8 @@ def regis():
                         input("tekan enter untuk lanjutkan...".upper())
                         continue
                     
-                    admin_terakhir += 1
-                    key_baru = f"admin_{admin_terakhir}"
+                    Data.admin_terakhir += 1
+                    key_baru = f"admin {Data.admin_terakhir}"
                     admin[key_baru] = [username, password]
                     print(f"== BERHASIL REGISTRASI ADMIN {key_baru} ==")
                     input("Tekan ENTER untuk melanjutkan...")
