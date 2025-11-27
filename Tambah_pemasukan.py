@@ -7,7 +7,7 @@ def Tambah_pemasukan(userID):
     print("=== TAMBAH PEMASUKAN ===")
     while True:
         try:
-            jumlah = int(input("Masukkan jumlah pemasukan: "))
+            jumlah = input("Masukkan jumlah pemasukan: ")
         except:
             print("\nINPUT HARUS ANGKA!")
             input("\nTekan ENTER untuk mengulang...")
@@ -41,7 +41,9 @@ def Tambah_pemasukan(userID):
         users[userID][2] += jumlah
         users[userID][3].append([jumlah, sumber, tanggal])
         table = PrettyTable(["Jumlah", "Sumber", "Tanggal"])
-        table.add_row([jumlah, sumber, tanggal])
+        table.add_row([f"Rp {jumlah:,}", sumber, tanggal])
+        
+        clear()
         print("\nPemasukan berhasil ditambahkan!\n")
         print(table)
         input("\nTekan ENTER untuk kembali...")
