@@ -65,7 +65,7 @@ def regis():
                         continue
                     
                     admin_terakhir += 1
-                    key_baru = f"admin_{admin_terakhir}"
+                    key_baru = f"admin {admin_terakhir}"
                     admin[key_baru] = [username, password]
                     print(f"== BERHASIL REGISTRASI ADMIN {key_baru} ==")
                     input("Tekan ENTER untuk melanjutkan...")
