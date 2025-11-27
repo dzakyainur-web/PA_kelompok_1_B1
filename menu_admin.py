@@ -31,10 +31,12 @@ def menu_admin(adminID):
         
         elif pilihan_admin == "5":
             clear()
-            print("Keluar dari Menu Admin")
+            print("\nKeluar dari Menu Admin")
             input("\nTekan ENTER untuk keluar...")
+            clear()
             break
         
         else:
-            print("Pilihan Anda tidak valid!")
+            print("\nPilihan Anda tidak valid!")
             input("\nTekan ENTER untuk mengulang...")
+            clear()
