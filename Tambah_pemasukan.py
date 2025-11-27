@@ -7,7 +7,7 @@ def Tambah_pemasukan(userID):
     print("=== TAMBAH PEMASUKAN ===")
     while True:
         try:
-            jumlah = input("Masukkan jumlah pemasukan: ")
+            jumlah = int(input("Masukkan jumlah pemasukan: "))
         except:
             print("\nINPUT HARUS ANGKA!")
             input("\nTekan ENTER untuk mengulang...")
