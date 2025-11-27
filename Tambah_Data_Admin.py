@@ -1,6 +1,8 @@
-from Data import admin, super_admin, users, clear
+from Data import admin, super_admin, users, admin_terakhir, clear
 
 def Tambah_DataAdmin():
+    global admin_terakhir
+
     while True:
         clear()
         print("======= SILAKAN REGISTRASI ADMIN BARU ========")
@@ -42,10 +44,10 @@ def Tambah_DataAdmin():
             input("tekan enter untuk lanjutkan...".upper())
             continue
 
-        
-        key_baru = f"admin {len(admin) + 1}"
+        admin_terakhir += 1
+        key_baru = f"admin {admin_terakhir}"
         admin[key_baru] = [username, password]
-        print("== BERHASIL REGISTRASI ADMIN ==")
+        print(f"== BERHASIL REGISTRASI ADMIN {key_baru} ==")
         input("Tekan ENTER untuk melanjutkan...")
         clear()
         return

@@ -7,6 +7,8 @@ admin = {
     "admin 2" : ["anto", "1234567890"]
 }
 
+admin_terakhir = 2
+
 users = {
     "user 1" : ["apel", "123", 0, [], []],
     "user 2" : ["mangga", "0000", 0, [], []]
