@@ -45,7 +45,7 @@ def login():
 
                 clear()
                 percobaan += 1
-                print("username atau password salah")
+                print("username atau password salah".upper())
                 login = True
             
 
