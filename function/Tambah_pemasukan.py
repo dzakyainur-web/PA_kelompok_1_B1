@@ -7,7 +7,7 @@ def Tambah_pemasukan(userID):
     print("=== TAMBAH PEMASUKAN ===")
     while True:
         try:
-            jumlah = int(input("Masukkan jumlah pemasukan: "))
+            jumlah = int(input("\nMasukkan jumlah pemasukan: "))
         except:
             print("\nINPUT HARUS ANGKA!")
             input("\nTekan ENTER untuk kembali...")
@@ -19,7 +19,7 @@ def Tambah_pemasukan(userID):
             continue
 
         while True:
-            sumber = input("Masukkan sumber pemasukan: ").strip()
+            sumber = input("\nMasukkan sumber pemasukan: ").strip()
 
             if sumber == "":
                 print("\nINPUT TIDAK BOLEH KOSONG!!!")
@@ -34,6 +34,7 @@ def Tambah_pemasukan(userID):
                 continue
 
             break
+        
     
         tanggal = datetime.now().strftime("%d-%m-%y")
         users[userID][2] += jumlah
@@ -43,5 +44,6 @@ def Tambah_pemasukan(userID):
         print("\nPemasukan berhasil ditambahkan!\n")
         print(table)
         input("\nTekan ENTER untuk kembali...")
+        return
 
 

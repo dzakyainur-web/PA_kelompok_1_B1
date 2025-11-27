@@ -1,4 +1,4 @@
-from Data import users, clear
+from data.Data import users, clear
 from prettytable import PrettyTable
 
 def Lihat_DataUser(adminID):

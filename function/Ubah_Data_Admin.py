@@ -49,7 +49,7 @@ def Ubah_DataAdmin():
     1. NAMA
     2. PASSWORD
     """)
-            ubah2 = input("APA YANG INGIN DI UBAH ? ")
+            ubah2 = input("APA YANG INGIN DI UBAH ? ").strip()
             if ubah2 == '1':
                 while True:
                     ubah3 = input("masukkan nama baru : ").strip()
