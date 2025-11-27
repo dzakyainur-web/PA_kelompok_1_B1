@@ -34,9 +34,10 @@ def Menu_User(userID):
                 return 
         elif pilihan == "7":
             clear()
-            print("Keluar dari menu user...")
-            input("Tekan ENTER untuk lanjut")
+            print("\nKeluar dari menu user...")
+            input("\nTekan ENTER untuk kembali...")
+            clear()
             break
         else:
-            print("Pilihan tidak valid!")
+            print("\nPilihan tidak valid!")
             input("Tekan ENTER untuk ulang...")

@@ -5,10 +5,23 @@ def Hapus_User(userID):
     print("=== HAPUS AKUN ===")
 
     konfirm = input("Apakah Anda yakin ingin menghapus akun Anda? (yes/no): ").strip().lower()
-    if konfirm != "yes":
-        print("Penghapusan dibatalkan.")
+    
+    while konfirm == "":
+        print("\nInput tidak boleh kosong!")
+        konfirm = input("Apakah Anda yakin ingin menghapus akun Anda? (yes/no): ").strip().lower()
+
+    if konfirm == "no":
+        print("\nPenghapusan dibatalkan")
         input("\nTekan ENTER untuk kembali...")
         return False
+    
+    while konfirm not in ("yes", "no"):
+        print("\nInput harus 'yes' atau 'no'!")
+        konfirm = input("Apakah Anda yakin ingin menghapus akun Anda? (yes/no): ").strip().lower()
+        if konfirm == "no":
+            print("\nPenghapusan dibatalkan.")
+            input("\nTekan ENTER untuk kembali...")
+            return False
 
     while True:
         clear()

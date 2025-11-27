@@ -5,11 +5,23 @@ def Ganti_Password(userID):
     print("=== GANTI PASSWORD ===")
 
     yakin = input("Yakin ingin mengganti password? (yes/no): ").strip().lower()
-    if yakin != "yes":
-        print("\nDIBATALKAN")
-        input("\nTekan ENTER untuk kembali...")
-        return
+    while yakin == "":
+        print("\nInput tidak boleh kosong")
+        yakin = input("Yakin ingin mengganti password (yes/no): ").strip().lower()
     
+    if yakin == "no":
+        print("\nPenggantian password dibatalkan")
+        input("\nTekan ENTER untuk kembali...")
+        return False
+    
+    while yakin not in ("yes", "no"):
+        print("\nInput harus 'yes' atau 'no'!")
+        yakin = input("Apakah Anda yakin ingin menghapus akun Anda? (yes/no): ").strip().lower()
+        if yakin == "no":
+            print("\nPenghapusan dibatalkan.")
+            input("\nTekan ENTER untuk kembali...")
+            return False
+        
     while True:
         clear()
         print("\n=== GANTI PASSWORD ===")
