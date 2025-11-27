@@ -1,4 +1,4 @@
-from Data import admin, users, clear
+from Data import admin, users, super_admin, admin_terakhir, clear
 from prettytable import PrettyTable
 
 # Tabel menu registrasi
@@ -11,6 +11,7 @@ tabel.header = False
 tabel.align = "l"
 
 def regis():
+    global admin_terakhir
     regis = True
     while regis:
         try:
@@ -26,6 +27,14 @@ def regis():
                     print("= KETIK 'BATAL' UNTUK MEMBATALKAN REGISTRASI =")
                     print("========= INPUT TIDAK BOLEH KOSONG ===========")
 
+                    if len(admin) > 0:
+                        print("\nDAFTAR ADMIN SAAT INI:")
+                        for i, key in enumerate(admin.keys(), start=1):
+                            print(f"{i}. {key} (username: {admin[key][0]})")
+
+                    else:
+                        print("\nBELUM ADA ADMIN")
+
                     username = input("\nMasukkan username: ").strip()
 
                     if username == "":
@@ -38,24 +47,29 @@ def regis():
                         clear()
                         print("REGISTRASI DIBATALKAN")
                         input("\nTekan ENTER untuk kembali...")
-                        regis = False
+                        clear()
                         return
 
                     password = input("Masukkan password: ").strip()
                     while password == "":
                         password = input("Masukkan password: ").strip()
 
-                    cek = any(admin[key][0] == username for key in admin)
+                    cek1 = any(admin[key][0] == username for key in admin)
+                    cek2 = any(users[key][0] == username for key in users)
+                    cek3 = super_admin[0] == username
 
-                    if cek:
+                    if cek1 or cek2 or cek3 == True:
                         print("===== USERNAME SUDAH TERPAKAI =====\n")
-                    else:
-                        key_baru = f"admin_{len(admin) + 1}"
-                        admin[key_baru] = [username, password]
-                        print("== BERHASIL REGISTRASI ADMIN ==")
-                        input("Tekan ENTER untuk melanjutkan...")
-                        clear()
-                        regis = False
+                        input("tekan enter untuk lanjutkan...".upper())
+                        continue
+                    
+                    admin_terakhir += 1
+                    key_baru = f"admin_{admin_terakhir}"
+                    admin[key_baru] = [username, password]
+                    print(f"== BERHASIL REGISTRASI ADMIN {key_baru} ==")
+                    input("Tekan ENTER untuk melanjutkan...")
+                    clear()
+                    return
 
             # ==================== REGISTRASI USER ====================
             elif reg == 2:
@@ -77,25 +91,28 @@ def regis():
                         clear()
                         print("REGISTRASI DIBATALKAN")
                         input("\nTekan ENTER untuk kembali...")
-                        regis = False
+                        clear()
                         return
                     
                     password = input("Masukkan password: ").strip()
                     while password == "":
                         password = input("Masukkan password: ").strip()
 
-                    # Cek apakah username sudah digunakan
-                    cek = any(users[key][0] == username for key in users)
+                    cek1 = any(admin[key][0] == username for key in admin)
+                    cek2 = any(users[key][0] == username for key in users)
+                    cek3 = super_admin[0] == username
 
-                    if cek:
+                    if cek1 or cek2 or cek3 == True:
                         print("===== USERNAME SUDAH TERPAKAI =====\n")
+                        input("tekan enter untuk lanjutkan...".upper())
+                        
                     else:
                         key_baru = f"user_{len(users) + 1}"
                         users[key_baru] = [username, password, 0, [], []]
                         print("== BERHASIL REGISTRASI USER ==")
                         input("Tekan ENTER untuk melanjutkan...")
                         clear()
-                        regis = False
+                        return
 
             # ==================== KELUAR ====================
             elif reg == 3:

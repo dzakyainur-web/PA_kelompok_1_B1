@@ -1,11 +1,13 @@
 import os
 
-super = ("super", "123")
+super_admin = ("super", "123")
 
 admin = {
     "admin 1" : ["juki", "12345"],
     "admin 2" : ["anto", "1234567890"]
 }
+
+admin_terakhir = 2
 
 users = {
     "user 1" : ["apel", "123", 0, [], []],
