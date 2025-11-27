@@ -1,4 +1,4 @@
-from Data import admin, users, clear
+from Data import admin, users, super_admin, clear
 from prettytable import PrettyTable
 
 # Tabel menu registrasi
@@ -38,24 +38,29 @@ def regis():
                         clear()
                         print("REGISTRASI DIBATALKAN")
                         input("\nTekan ENTER untuk kembali...")
-                        regis = False
+                        clear()
                         return
 
                     password = input("Masukkan password: ").strip()
                     while password == "":
                         password = input("Masukkan password: ").strip()
 
-                    cek = any(admin[key][0] == username for key in admin)
+                    cek1 = any(admin[key][0] == username for key in admin)
+                    cek2 = any(users[key][0] == username for key in users)
+                    cek3 = super_admin[0] == username
 
-                    if cek:
+                    if cek1 or cek2 or cek3 == True:
                         print("===== USERNAME SUDAH TERPAKAI =====\n")
+                        input("tekan enter untuk lanjutkan...".upper())
+                        continue
+
                     else:
                         key_baru = f"admin_{len(admin) + 1}"
                         admin[key_baru] = [username, password]
                         print("== BERHASIL REGISTRASI ADMIN ==")
                         input("Tekan ENTER untuk melanjutkan...")
                         clear()
-                        regis = False
+                        return
 
             # ==================== REGISTRASI USER ====================
             elif reg == 2:
@@ -77,25 +82,28 @@ def regis():
                         clear()
                         print("REGISTRASI DIBATALKAN")
                         input("\nTekan ENTER untuk kembali...")
-                        regis = False
+                        clear()
                         return
                     
                     password = input("Masukkan password: ").strip()
                     while password == "":
                         password = input("Masukkan password: ").strip()
 
-                    # Cek apakah username sudah digunakan
-                    cek = any(users[key][0] == username for key in users)
+                    cek1 = any(admin[key][0] == username for key in admin)
+                    cek2 = any(users[key][0] == username for key in users)
+                    cek3 = super_admin[0] == username
 
-                    if cek:
+                    if cek1 or cek2 or cek3 == True:
                         print("===== USERNAME SUDAH TERPAKAI =====\n")
+                        input("tekan enter untuk lanjutkan...".upper())
+                        
                     else:
                         key_baru = f"user_{len(users) + 1}"
                         users[key_baru] = [username, password, 0, [], []]
                         print("== BERHASIL REGISTRASI USER ==")
                         input("Tekan ENTER untuk melanjutkan...")
                         clear()
-                        regis = False
+                        return
 
             # ==================== KELUAR ====================
             elif reg == 3:

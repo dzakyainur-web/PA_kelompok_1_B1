@@ -1,6 +1,6 @@
 import os
 
-super = ("super", "123")
+super_admin = ("super", "123")
 
 admin = {
     "admin 1" : ["juki", "12345"],

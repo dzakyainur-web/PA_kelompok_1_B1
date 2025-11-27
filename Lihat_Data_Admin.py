@@ -5,8 +5,13 @@ def Lihat_DataAdmin():
     print("DAFTAR DATA ADMIN :")
     if len(admin) == 0:
         print("BELUM ADA NASABAH")
+        clear()
+        return
 
-    for key, value in admin.items():
-        print(f"\n{key}\nNAMA : {value[0]}\nPASSWORD : {value[1]}")
+    for i, (key, value) in enumerate(admin.items(), start=1):
+        print(f"\n{i}. {key}")
+        print(f"   NAMA     : {value[0]}")
+        print(f"   PASSWORD : {value[1]}")
+
     input("\nTEKAN ENTER UNTUK KEMBALI...")
     clear()

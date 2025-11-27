@@ -1,5 +1,5 @@
 import SuperAdmin
-from Data import super, admin, users, clear
+from Data import super_admin, admin, users, clear
 from Menu_user import Menu_User
 from menu_admin import menu_admin
 
@@ -17,7 +17,7 @@ def login():
             password = input("masukkan password anda : ")
 
 
-            if username == super[0] and password == super[1]:
+            if username == super_admin[0] and password == super_admin[1]:
                 clear()
                 SuperAdmin.SuperADMIN()
                 break

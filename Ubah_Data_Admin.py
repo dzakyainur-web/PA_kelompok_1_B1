@@ -1,67 +1,3 @@
-# from Data import admin, clear
-
-# def Ubah_DataAdmin():
-#     UbahAdmin = True
-#     while UbahAdmin:
-#         clear()
-#         if len(admin) == 0:
-#             print("BELUM ADA ADMIN")
-#             input("\nketik ENTER untuk kembali...")
-#             UbahAdmin = False
-
-#         else:
-#             print("DAFTAR DATA ADMIN (PENGUBAHAN DATA) :")
-#             for key, value in admin.items():
-#                 print(f"\n{key}\nNAMA : {value[0]}\nPASSWORD : {value[1]}")
-
-#             ubah1 = int(input("\nADMIN NOMOR BERAPA ? ").strip())
-#             if ubah1 == "":
-#                 print("INPUT TIDAK BOLEH KOSONG")
-#                 input("TEKAN ENTER UNTUK KEMBALI...")
-#                 clear()
-            
-#             daftar_key = list(admin.keys())
-#             key_dipilih = daftar_key[ubah1 -1]
-
-#             print("""
-#     1. NAMA
-#     2. PASSWORD
-#     """)
-#             ubah2 = input("APA YANG INGIN DI UBAH ? ")
-#             if ubah2 == '1':
-#                 while True:
-#                     ubah3 = input("masukkan nama baru : ").strip()
-#                     if ubah3 == "":
-#                         print("nama tidak boleh kosong".upper())
-#                         continue
-
-#                     admin[key_dipilih][0] = ubah3
-#                     print("NAMA BERHASIL DIGANTI")
-#                     input("TEKAN ENTER UNTUK MELANJUTKAN")
-#                     clear()
-#                     break
-
-#             elif ubah2 == '2':
-#                 password_lama = admin[key_dipilih][1]
-#                 while True:
-#                     ubah4 = input("masukkan password baru : ".strip())
-#                     if ubah4 == "":
-#                         print("password tidak boleh kosong".upper())
-#                         continue
-
-#                     if password_lama == ubah4:
-#                         print("PASSWORD TIDAK BOLEH SAMA")
-#                         continue
-
-#                     admin[key_dipilih][1] = ubah4
-#                     print("PASSWORD BERHASIL DIGANTI")
-#                     input("tekan enter untuk melanjutkan".upper())
-#                     clear()
-#                     break
-
-#             else:
-#                 clear()
-#                 print("tidak ada pilihan".upper())
 from Data import admin, clear
 
 def Ubah_DataAdmin():
@@ -70,87 +6,101 @@ def Ubah_DataAdmin():
         clear()
         if len(admin) == 0:
             print("BELUM ADA ADMIN")
-            input("\nKetik ENTER untuk kembali...")
+            input("\nketik ENTER untuk kembali...")
             UbahAdmin = False
             return
 
-        # tampilkan daftar admin
-        while True:
-            clear()
+        else:
+            print("KETIK 0 UNTUK MEMBATALKAN PENGUBAHAN DATA")
             print("DAFTAR DATA ADMIN (PENGUBAHAN DATA) :")
-            for key, value in admin.items():
-                print(f"\n{key}\nNAMA : {value[0]}\nPASSWORD : {value[1]}")
+            daftar_key = list(admin.keys())
+            for i, key in enumerate(daftar_key, start=1):
+                print(f"\n{i}. {key}\nNAMA : {admin[key][0]}\nPASSWORD : {admin[key][1]}")
 
-        # --- input nomor admin dengan validasi ---
-            raw = input("\nADMIN NOMOR BERAPA ? ").strip()
-            if raw == "":
+            ubah1 = input("\nADMIN NOMOR BERAPA ? ").strip()
+            if ubah1 == "":
                 print("INPUT TIDAK BOLEH KOSONG")
                 input("TEKAN ENTER UNTUK KEMBALI...")
-                clear
-                continue  
-
-            try:
-                ubah1 = int(raw)
-            except ValueError:
-                print("MASUKKAN ANGKA YANG VALID!")
-                input("TEKAN ENTER UNTUK MENGULANG...")
                 clear()
-                # tampilkan ulang daftar, ulangi loop input nomor
-                for key, value in admin.items():
-                    print(f"\n{key}\nNAMA : {value[0]}\nPASSWORD : {value[1]}")
+                continue
+            
+            if not ubah1.isdigit():
+                print("HANYA MENERIMA ANGKA")
+                input("TEKAN ENTER UNTUK KEMBALI...")
+                clear()
                 continue
 
-            # cek range
-            daftar_key = list(admin.keys())
-            if ubah1 < 1 or ubah1 > len(daftar_key):
-                print("NOMOR ADMIN TIDAK TERSEDIA!")
-                input("TEKAN ENTER UNTUK MENGULANG...")
-                clear()
-                # tampil ulang daftar
-                for key, value in admin.items():
-                    print(f"\n{key}\nNAMA : {value[0]}\nPASSWORD : {value[1]}")
-                continue
+            ubah1 = int(ubah1)
 
-            # jika valid, ambil key yang dipilih dan keluar dari loop input nomor
+            if ubah1 == 0:
+                print("BATAL UBAH DATA")
+                input("TEKAN ENTER UNTUK KEMBALI...")
+                clear()
+                return
+            
+            if not (1 <= ubah1 <= len(daftar_key)):
+                print("NOMOR ADMIN TIDAK VALID")
+                input("TEKAN ENTER UNTUK KEMBALI...")
+                continue
+            
             key_dipilih = daftar_key[ubah1 - 1]
-            break
 
-        # pilihan ubah (nama / password)
-        print("""
-1. NAMA
-2. PASSWORD
-""")
-        ubah2 = input("APA YANG INGIN DI UBAH ? ").strip()
+            print("""
+    1. NAMA
+    2. PASSWORD
+    """)
+            ubah2 = input("APA YANG INGIN DI UBAH ? ")
+            if ubah2 == '1':
+                while True:
+                    ubah3 = input("masukkan nama baru : ").strip()
+                    if ubah3 == "":
+                        print("nama tidak boleh kosong".upper())
+                        continue
 
-        if ubah2 == '1':
-            while True:
-                ubah3 = input("Masukkan nama baru : ").strip()
-                if ubah3 == "":
-                    print("NAMA TIDAK BOLEH KOSONG")
-                    continue
-                admin[key_dipilih][0] = ubah3
-                print("NAMA BERHASIL DIGANTI")
-                input("TEKAN ENTER UNTUK MELANJUTKAN")
+                    if ubah3 == '0':
+                        print("BATAL UBAH DATA")
+                        input("TEKAN ENTER UNTUK KEMBALI...")
+                        clear()
+                        return
+
+                    admin[key_dipilih][0] = ubah3
+                    print("NAMA BERHASIL DIGANTI")
+                    input("TEKAN ENTER UNTUK MELANJUTKAN")
+                    clear()
+                    return
+
+            elif ubah2 == '2':
+                password_lama = admin[key_dipilih][1]
+                while True:
+                    ubah4 = input("masukkan password baru : ".strip())
+                    if ubah4 == "":
+                        print("password tidak boleh kosong".upper())
+                        continue
+                        
+                    if ubah4 == '0':
+                        print("BATAL UBAH DATA")
+                        input("TEKAN ENTER UNTUK KEMBALI...")
+                        clear()
+                        return
+                    
+                    if password_lama == ubah4:
+                        print("PASSWORD TIDAK BOLEH SAMA")
+                        continue
+
+                    admin[key_dipilih][1] = ubah4
+                    print("PASSWORD BERHASIL DIGANTI")
+                    input("tekan enter untuk melanjutkan".upper())
+                    clear()
+                    return
+
+            elif ubah2 == '0':
+                print("BATAL UBAH DATA")
+                input("TEKAN ENTER UNTUK KEMBALI...")
                 clear()
-                break
-
-        elif ubah2 == '2':
-            password_lama = admin[key_dipilih][1]
-            while True:
-                ubah4 = input("Masukkan password baru : ").strip()
-                if ubah4 == "":
-                    print("PASSWORD TIDAK BOLEH KOSONG")
-                    continue
-                if ubah4 == password_lama:
-                    print("PASSWORD TIDAK BOLEH SAMA DENGAN PASSWORD LAMA")
-                    continue
-                admin[key_dipilih][1] = ubah4
-                print("PASSWORD BERHASIL DIGANTI")
-                input("TEKAN ENTER UNTUK MELANJUTKAN")
+                return
+            
+            else:
+                print("tidak ada pilihan".upper())
+                input("tekan enter untuk melanjutkan".upper())
                 clear()
-                break
-        else:
-            clear()
-            print("TIDAK ADA PILIHAN".upper())
-            input("TEKAN ENTER UNTUK KEMBALI...")
-            clear()
+
