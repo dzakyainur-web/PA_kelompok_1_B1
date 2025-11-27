@@ -29,6 +29,7 @@ def login():
                         print(f"""
                 ====ANDA BERHASIL LOGIN SEBAGAI ADMIN====
                 SELAMAT DATANG {value[0]}\n""")
+                        input("TEKAN ENTER UNTUK MELANJUTKAN...")
                         menu_admin(key)
                         return key
 
@@ -37,6 +38,7 @@ def login():
                         print(f"""
                 ====ANDA BERHASIL LOGIN SEBAGAI USER====
                 SELAMAT DATANG {value[0]}\n""")
+                        input("TEKAN ENTER UNTUK MELANJUTKAN...")
                         Menu_User(key)  
                         return key
                         
