@@ -66,7 +66,7 @@ def Lihat_Riwayat_Transaksi_User(adminID):
                 gabung_transaksi.append(("Pengeluaran", jumlah_pengeluaran, tujuan, tanggal))
                     
             for i, (jenis, jumlah, keterangan, tanggal) in enumerate(gabung_transaksi, start = 1):
-                tabel_riwayat.add_row([i, jenis, jumlah, keterangan, tanggal])
+                tabel_riwayat.add_row([i, jenis, f"Rp {jumlah:,}", keterangan, tanggal])
             print(tabel_riwayat)
 
         input("\nTekan ENTER untuk kembali...")
